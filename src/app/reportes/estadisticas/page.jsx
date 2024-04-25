@@ -1,90 +1,102 @@
-import navbar from "../../components/navbar";
+"use client";
+import Navbar from "../../components/navbar";
 import Link from "next/link";
+import Venta from "../../utils/modelos/venta";
+import connectDB from "@/app/libs/mogod";
+import { useState } from "react";
 
-export default function homehub() {
+const getTopics = async () => {
+  await connectDB();
+  const ventas = await Venta.find();
+  return ventas;
+};
+
+export default async function Reportes() {
+  const ventas = await getTopics();
+  var aux = 0;
+  var eprecio = 0;
+  var ediferencia = 0;
+  var eenganche = 0;
+  var eabono1 = 0;
+  var eabono2 = 0;
+  var eabono3 = 0;
+  var edinero = 0;
+  const ecuenta = ventas.length;
+  for (let i = 0; i < ecuenta; i++) {
+    eprecio =eprecio+parseInt(ventas[i].precio);
+    eenganche =eenganche+parseInt(ventas[i].enganche);
+    eabono1 =eabono1+parseInt(ventas[i].abono1);
+    eabono2 =eabono2+parseInt(ventas[i].abono2);
+    eabono3 =eabono3+parseInt(ventas[i].abono3);
+     
+  } 
+  edinero = eenganche + eabono1 + eabono2 + eabono3;
+  ediferencia = eprecio - edinero;
+
   return (
     <>
-      <div className="m-4 p-4 border-2 border-slate-500">
-        <div>
-          <h1>Promociones Aguasclientes</h1>
-
-          <h3>Seleccione una opcion</h3>
+      <div>
+        <Navbar />
+        <div className="grid place-items-center">
+          <p className="text-2xl place-items-center">Estadisticas</p>
         </div>
-        <div className="flex p-4 m-4 border-2 border-slate-200">
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/tablas"}>
-              <Link href="/tablas">Tablas</Link>
-            </p>
-            <p key={"/tablas/grupos"}>
-              <Link href="/tablas/grupos">Grupos</Link>
-            </p>
-            <p key={"/tablas/zonas"}>
-              <Link href="/tablas/zonas">Zonas</Link>
-            </p>
-            <p key={"/tablas/productos"}>
-              <Link href="/tablas/productos">Productos</Link>
-            </p>
-            <p key={"/tablas/paquetes"}>
-              <Link href="/tablas/paquetes">Paquetes</Link>
-            </p>
-            <p key={"/tablas/cobradores"}>
-              <Link href="/tablas/cobradores">Cobradores</Link>
-            </p>
+        <div className="grid grid-cols-4 place-items-center m-4 p-6 px-64 ">
+          <div>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Precio: {eprecio}</p>
+              </div>
+            </div>
+
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Dinero: {edinero}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/movimientos"}>
-              <Link href="/movimientos">Movimientos</Link>
-            </p>
+          <div>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>
+                  Diferencia: 
+                  {ediferencia}
+                </p>
+              </div>
+            </div>
 
-            <p key={"/movimientos/altas"}>
-              <Link href="/movimientos/altas">Altas</Link>
-            </p>
-            <p key={"/movimientos/abonos"}>
-              <Link href="/movimientos/abonos">Abonos</Link>
-            </p>
-            <p key={"/movimientos/modificaciones"}>
-              <Link href="/movimientos/modificaciones">Modificaciones</Link>
-            </p>
-            <p key={"/movimientos/otrosmov"}>
-              <Link href="/movimientos/otrosmov">Otrosmov</Link>
-            </p>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Cuentas: {ecuenta}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/reportes"}>
-              <Link href="/reportes">Reportes</Link>
-            </p>
-            <p key={"/reportes/estadisticas"}>
-              <Link href="/reportes/estadisticas">Estadisticas</Link>
-            </p>
-            <p key={"/reportes/mapa"}>
-              <Link href="/reportes/mapa">Mapa</Link>
-            </p>
-            <p key={"/reportes/otrosrep1"}>
-              <Link href="/reportes/otrosrep1">Otrosrep1</Link>
-            </p>
-            <p key={"/reportes/otrosrep2"}>
-              <Link href="/reportes/otrosrep2">Otrosrep2</Link>
-            </p>
-          </div>
+          <div>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Enganches: {eenganche}</p>
+              </div>
+            </div>
 
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/otros"}>
-              <Link href="/otros">Otros</Link>
-            </p>
-            <p key={"otros/administrador"}>
-              <Link href="otros/administrador">Administrador</Link>
-            </p>
-            <p key={"otros/ajustes"}>
-              <Link href="otros/ajustes">Ajustes</Link>
-            </p>
-            <p key={"otros/ayuda"}>
-              <Link href="otros/ayuda">Ayuda</Link>
-            </p>
-            <p key={"otros/sobre"}>
-              <Link href="otros/sobre">Sobre</Link>
-            </p>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Abonos 1: {eabono1}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Abonos 2: {eabono2}</p>
+              </div>
+            </div>
+
+            <div className="m-4 p-6 border-4 border-emerald-900 bg-emerald-950">
+              <div className="grid place-items-center">
+                <p>Abonos 3: {eabono3}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

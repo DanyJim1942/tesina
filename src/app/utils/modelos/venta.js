@@ -80,6 +80,5 @@ const ventaSchema = new Schema({
     }, 
 });
 
-const Venta = mongoose.model.Venta || mongoose.model("Venta", ventaSchema);
+export default mongoose.model.Venta || mongoose.model("Venta", ventaSchema);
 
-export default Venta;

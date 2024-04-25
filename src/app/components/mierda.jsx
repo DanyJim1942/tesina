@@ -32,8 +32,6 @@ export default function Mierda() {
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
 
-  var cont = 0;
-  var stringgg = "quizas"
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,11 +65,29 @@ export default function Mierda() {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        cuenta,  producto1, producto2, producto3, precio,
-        enganche, abono1, abono2, abono3, fechaventa,
-        fechacobro1, fechacobro2, vendedor, cobrador, estado,
-        nombre, telefono, refnombre, refdomicilio, reftelefono,
-        refparentesco, municipio, poblacion, 
+        cuenta,
+        producto1,
+        producto2,
+        producto3,
+        precio,
+        enganche,
+        abono1,
+        abono2,
+        abono3,
+        fechaventa,
+        fechacobro1,
+        fechacobro2,
+        vendedor,
+        cobrador,
+        estado,
+        nombre,
+        telefono,
+        refnombre,
+        refdomicilio,
+        reftelefono,
+        refparentesco,
+        municipio,
+        poblacion,
         detpoblacion,
       }),
     });
@@ -87,57 +103,67 @@ export default function Mierda() {
 
   return (
     <div>
-      <div id="altaswrapper" className="">
+      <div id="altaswrapper" className="grid grid-cols-1 place-items-center">
         {/*DIV - NAVIGACION VAR*/}
-        <div id="altasnavbar" className="flex"></div>
+        <div id="altasnavbar" className="place-items-center"></div>
         {/* DIV CONTENEDOR 0 */}
-        <div id="altascontenedor0" className="bg-slate-800 flex ">
-          <label htmlFor="">contenedor 0</label>
+        <div id="altascontenedor0" className="p-2 m-2 border-4 border-emerald-900 bg-emerald-950 flex ">
           {/* FORMULARIO */}
-          <form
-            onSubmit={handleSubmit}
-            className="border-t flex flex-col"
-          >
+          <form onSubmit={handleSubmit} className=" flex flex-col">
             {/* DIV - CONTENEDOR 1 */}
             <div id="altascontendor1" className="flex flex-row gap-8 m-10">
-              <label htmlFor="">contenedor 1</label>
               <br />
               {/* DIV - ICONO */}
-              <div id="altasicono" className="m-2">
+              <div id="altasicono" className="m-2 flex-1 items-center justify-center">
                 <label htmlFor="">icono</label>
               </div>
               {/* DIV - ASIGNACION FECHAS */}
-              <div id="altasfechas" className="m-2">
+              <div id="altasfechas" className="m-2 flex-1 items-center justify-center">
                 {/* DIV - FECHA VENTA - DATO*/}
                 <div>
                   <label htmlFor="">FECHA VENTA | D: - D:</label>
+                  <input
+                    onChange={(e) => fechaventaset(e.target.value)}
+                    value={fechaventa}
+                    type="text"
+                    id="cuenta"
+                    className="bg-slate-500"
+                    placeholder="FECHA VENTA"
+                  />
                 </div>
                 {/* DIV -FECHACOBRO - DATO */}
                 <div>
                   <label htmlFor="">FECHA COBRO | D: - D:</label>
+                  <input
+                    onChange={(e) => fechacobro1set(e.target.value)}
+                    value={fechacobro1}
+                    type="text"
+                    id="cuenta"
+                    className="bg-slate-500"
+                    placeholder="FECHA COBRO"
+                  />
                 </div>
               </div>
               {/* DIV - NUMERO DE CUENTA - DATO */}
-              <div id="altascuenta" className="m-2">
+              <div id="altascuenta" className="m-2  flex-1 items-center justify-center">
                 <label htmlFor="cuenta">Cuenta: </label>
                 <input
                   onChange={(e) => cuentaset(e.target.value)}
                   value={cuenta}
                   type="text"
                   id="cuenta"
-                  className="bg-transparent"
-                  placeholder="Num Cuenta"
+                  className="bg-slate-500"
+                  placeholder="CUENTA"
                 />
               </div>
             </div>
             {/* DIV - CONTENEDOR 2 */}
             <div id="altascontenedor2" className="flex flex-row gap-8 m-10">
-              <label htmlFor="">contenedor 2</label>
               {/* DIV - ALTA ARTICULOS */}
               <div id="altasarticulos">
                 {/* DIV PRODUCTO 1 - DATO */}
                 <div>
-                  <label htmlFor="producto1">Producto 1</label>
+                  <label htmlFor="producto1">Producto 1 </label>
                   <input
                     onChange={(e) => producto1set(e.target.value)}
                     value={producto1}
@@ -150,7 +176,7 @@ export default function Mierda() {
 
                 {/* DIV PRODUCTO 2 - DATO */}
                 <div>
-                  <label htmlFor="producto2">Producto 2</label>
+                  <label htmlFor="producto2">Producto 2 </label>
                   <input
                     onChange={(e) => producto2set(e.target.value)}
                     value={producto2}
@@ -163,7 +189,7 @@ export default function Mierda() {
 
                 {/* DIV PRODUCTO 3 - DATO */}
                 <div>
-                  <label htmlFor="producto3">Producto 3</label>
+                  <label htmlFor="producto3">Producto 3 </label>
                   <input
                     onChange={(e) => producto3set(e.target.value)}
                     value={producto3}
@@ -241,7 +267,6 @@ export default function Mierda() {
             </div>
             {/*DIV - CONTENEDOR3 */}
             <div id="contenedor3" className="flex  flex-col m-10">
-              <label htmlFor="">contenedor 3</label>
               {/*DIV - ALTASPERSONA */}
               <div id="altaspersona" className="flex gap-8">
                 {/*DIV - NOMBRE -DATO */}
@@ -275,10 +300,26 @@ export default function Mierda() {
                   {/*DIV - ESTADO - DATO */}
                   <div className="m-2 gap-2 flex">
                     <label htmlFor="">Estado</label>
+                    <input
+                      onChange={(e) => estadoset(e.target.value)}
+                      value={estado}
+                      type="text"
+                      id="cuenta"
+                      className="bg-slate-500"
+                      placeholder="Estado"
+                    />
                   </div>
                   {/*DIV -  MUNICIPIO - DATO*/}
                   <div className="m-2 gap-2 flex">
-                    <label htmlFor="">Municio</label>
+                    <label htmlFor="">Municipio</label>
+                    <input
+                      onChange={(e) => municipioset(e.target.value)}
+                      value={municipio}
+                      type="text"
+                      id="cuenta"
+                      className="bg-slate-500"
+                      placeholder="Municipio"
+                    />
                   </div>
                   {/*DIV - POBLACION - DATO */}
                   <div className="m-2 gap-2 flex">
@@ -360,7 +401,7 @@ export default function Mierda() {
             </div>
 
             <button
-              className="bg-green-700 p-3 text-white font-bold"
+              className="bg-emerald-700 mx-96  p-3 text-white font-bold "
               type="submit"
             >
               Ingresar

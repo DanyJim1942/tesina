@@ -1,90 +1,114 @@
 import navbar from "../components/navbar";
 import Link from "next/link";
 
+
+function fecha(){
+  const fecha = new Date();
+  return fecha;
+}
+
 export default function homehub() {
   return (
     <>
-      <div className="m-4 p-4 border-2 border-slate-500">
-        <div>
-          <h1>Promociones Aguasclientes</h1>
-
-          <h3>Seleccione una opcion</h3>
+      <div className="p-4 ">
+        <div className="flex-row ">
+          <div className="flex gap-12 p-4  border-4 border-emerald-900 bg-emerald-950">
+            <p className="text-xl flex-1">Promociones Aguasclientes</p>
+            <img className="flex-1" src="" alt="" />
+            <p className="flex-1">as{}</p>
+          </div>
+          <div className="grid place-items-center m-2"> 
+              <p className="text-2xl">
+                Seleccione una opcion
+              </p> 
+          </div>
         </div>
-        <div className="flex p-4 m-4 border-2 border-slate-200">
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/tablas"}>
-              <Link href="/tablas">Tablas</Link>
-            </p>
-            <p key={"/tablas/grupos"}>
-              <Link href="/tablas/grupos">Grupos</Link>
-            </p>
-            <p key={"/tablas/zonas"}>
-              <Link href="/tablas/zonas">Zonas</Link>
-            </p>
-            <p key={"/tablas/productos"}>
-              <Link href="/tablas/productos">Productos</Link>
-            </p>
-            <p key={"/tablas/paquetes"}>
-              <Link href="/tablas/paquetes">Paquetes</Link>
-            </p>
-            <p key={"/tablas/cobradores"}>
-              <Link href="/tablas/cobradores">Cobradores</Link>
-            </p>
+        <div className="flex-column mx-48">
+          <div className="flex">
+            <div className="flex-1 p-8 m-4 border-4 border-emerald-900 bg-emerald-950">
+              <p key={"/tablas"}>
+                <Link className="text-2xl" href="/tablas">
+                  Tablas
+                </Link>
+              </p>
+              <li key={"/tablas/grupos"}>
+                <Link href="/tablas/grupos">Grupos</Link>
+              </li>
+              <li key={"/tablas/zonas"}>
+                <Link href="/tablas/zonas">Zonas</Link>
+              </li>
+              <li key={"/tablas/productos"}>
+                <Link href="/tablas/productos">Productos</Link>
+              </li>
+              <li key={"/tablas/paquetes"}>
+                <Link href="/tablas/paquetes">Paquetes</Link>
+              </li>
+              <li key={"/tablas/cobradores"}>
+                <Link href="/tablas/cobradores">Cobradores</Link>
+              </li>
+            </div>
+
+            <div className="flex-1 p-8 m-4 border-4 border-emerald-900 bg-emerald-950">
+              <p key={"/movimientos"}>
+                <Link className="text-2xl" href="/movimientos">
+                  Movimientos
+                </Link>
+              </p>
+
+              <li key={"/movimientos/altas"}>
+                <Link href="/movimientos//altas">Altas</Link>
+              </li>
+              <li key={"/movimientos/abonos"}>
+                <Link href="/movimientos/abonos">Abonos</Link>
+              </li>
+              <li key={"/movimientos/modificaciones"}>
+                <Link href="/movimientos/modificaciones">Modificaciones</Link>
+              </li>
+              <li key={"/movimientos/otrosmov"}>
+                <Link href="/movimientos/otrosmov">Otrosmov</Link>
+              </li>
+            </div>
           </div>
+          <div className="flex">
+            <div className="flex-1 p-8 m-4 border-4 border-emerald-900 bg-emerald-950">
+              <p key={"/reportes"}>
+                <Link className="text-2xl" href="/reportes">
+                  Reportes
+                </Link>
+              </p>
+              <li key={"/reportes/estadisticas"}>
+                <Link href="/reportes/estadisticas">Estadisticas</Link>
+              </li>
+              <li key={"/reportes/mapa"}>
+                <Link href="/reportes/mapa">Mapa</Link>
+              </li>
+              <li key={"/reportes/otrosrep1"}>
+                <Link href="/reportes/otrosrep1">Otrosrep1</Link>
+              </li>
+              <li key={"/reportes/otrosrep2"}>
+                <Link href="/reportes/otrosrep2">Otrosrep2</Link>
+              </li>
+            </div>
 
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/movimientos"}>
-              <Link href="/movimientos">Movimientos</Link>
-            </p>
-
-            <p key={"/movimientos/altas"}>
-              <Link href="/movimientos//altas">Altas</Link>
-            </p>
-            <p key={"/movimientos/abonos"}>
-              <Link href="/movimientos/abonos">Abonos</Link>
-            </p>
-            <p key={"/movimientos/modificaciones"}>
-              <Link href="/movimientos/modificaciones">Modificaciones</Link>
-            </p>
-            <p key={"/movimientos/otrosmov"}>
-              <Link href="/movimientos/otrosmov">Otrosmov</Link>
-            </p>
-          </div>
-
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/reportes"}>
-              <Link href="/reportes">Reportes</Link>
-            </p>
-            <p key={"/reportes/estadisticas"}>
-              <Link href="/reportes/estadisticas">Estadisticas</Link>
-            </p>
-            <p key={"/reportes/mapa"}>
-              <Link href="/reportes/mapa">Mapa</Link>
-            </p>
-            <p key={"/reportes/otrosrep1"}>
-              <Link href="/reportes/otrosrep1">Otrosrep1</Link>
-            </p>
-            <p key={"/reportes/otrosrep2"}>
-              <Link href="/reportes/otrosrep2">Otrosrep2</Link>
-            </p>
-          </div>
-
-          <div className="p-4 m-4 border-2 border-slate-200">
-            <p key={"/otros"}>
-              <Link href="/otros">Otros</Link>
-            </p>
-            <p key={"otros/administrador"}>
-              <Link href="otros/administrador">Administrador</Link>
-            </p>
-            <p key={"otros/ajustes"}>
-              <Link href="otros/ajustes">Ajustes</Link>
-            </p>
-            <p key={"otros/ayuda"}>
-              <Link href="otros/ayuda">Ayuda</Link>
-            </p>
-            <p key={"otros/sobre"}>
-              <Link href="otros/sobre">Sobre</Link>
-            </p>
+            <div className="flex-1 p-8 m-4 border-4 border-emerald-900 bg-emerald-950">
+              <p key={"/otros"}>
+                <Link className="text-2xl" href="/otros">
+                  Otros
+                </Link>
+              </p>
+              <li key={"otros/administrador"}>
+                <Link href="otros/administrador">Administrador</Link>
+              </li>
+              <li key={"otros/ajustes"}>
+                <Link href="otros/ajustes">Ajustes</Link>
+              </li>
+              <li key={"otros/ayuda"}>
+                <Link href="otros/ayuda">Ayuda</Link>
+              </li>
+              <li key={"otros/sobre"}>
+                <Link href="otros/sobre">Sobre</Link>
+              </li>
+            </div>
           </div>
         </div>
       </div>

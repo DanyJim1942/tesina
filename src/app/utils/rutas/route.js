@@ -1,4 +1,5 @@
-import Contact from "../modelos/usuario";
+import Usuario from "../modelos/usuario";
+import Venta from "../modelos/venta";
 import connectDB from "@/app/libs/mogod";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
@@ -8,7 +9,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    await Contact.create({ fullname, email, message });
+    await Usuario.create({ fullname, email, message });
 
     return NextResponse.json({
       msg: ["Message sent successfully"],

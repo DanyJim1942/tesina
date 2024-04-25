@@ -2,99 +2,74 @@
 
 import { useState } from "react";
 
-export default function ContactForm() {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+export default function Usuario() {
+  const [usuario, setUsuario] = useState("");
+  const [clave, setClave] = useState("");
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
-  var cont=0
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Full name: ", fullname);
-    console.log("Email: ", email);
-    console.log("Message: ", message);
+    console.log("Full name: ", usuairo);
+    console.log("Message: ", clave);
 
-    const res = await fetch("utils/rutas", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        fullname,
-        email,
-        message,
-      }),
-    });
 
     const { msg, success } = await res.json();
     setError(msg);
     setSuccess(success);
 
     if (success) {
-      setFullname("");
-      setEmail("");
-      setMessage("");
+      setUsuario(""); 
+      setClave("");
     }
   };
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="py-4 mt-4 border-t flex flex-col gap-5"
-      >
-        <div>
-          <label htmlFor="fullname">Full Name</label>
-          <input
-            onChange={(e) => setFullname(e.target.value)}
-            value={fullname}
-            type="text"
-            id="fullname"
-            placeholder="John Doe"
-          />
-        </div>
+      <div className="px-72 py-16" >
+        <form
+          onSubmit={handleSubmit}
+          className="mx-36 py-16 px-16 border-4 border-emerald-900 bg-emerald-950 flex flex-col gap-5"
+        >
+          <div className="place-items-center my-4">
+            <img></img>
+            <p className="text-4xl">Acceso</p>
+          </div>
+          <div>
+            <label htmlFor="usuario">Usuario</label>
+            <input
+              onChange={(e) => setUsuario(e.target.value)}
+              value={usuario}
+              type="text"
+              id="usuario"
+              placeholder="Usuario"
+              className="text-black"
+            />
+          </div>
+ 
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="text"
-            id="email"
-            placeholder="john@gmail.com"
-          />
-        </div>
+          <div>
+            <label htmlFor="clave">Clave de acceso</label>
+            <input
+              onChange={(e) => setClave(e.target.value)}
+              value={clave}
+              className="text-black"
+              id="clave"
+              placeholder="Clave de acceso"
+            ></input>
+          </div>
 
-        <div>
-          <label htmlFor="message">Your Message</label>
-          <textarea
-            onChange={(e) => setMessage(e.target.value)}
-            value={message}
-            className="h-32"
-            id="message"
-            placeholder="Type your message here..."
-          ></textarea>
-        </div>
+          <button
+            className="bg-emerald-700 mx-20 mt-8  p-3 text-white font-bold"
+            type="submit"
 
-        <button className="bg-green-700 p-3 text-white font-bold" type="submit">
-          Send
-        </button>
-      </form>
+          >
+            Iniciar sesion
+          </button>
+        </form>
 
-      <div className="bg-slate-100 flex flex-col">
-        {error &&
-          error.map((e) => (
-            <div key={cont=cont+1}
-              className={`${success ? "text-green-800" : "text-red-600"} px-5 py-2`}
-              >
-              {e}
-            </div>
-          ))}
       </div>
-      <div>holabb</div>
     </>
   );
 }
